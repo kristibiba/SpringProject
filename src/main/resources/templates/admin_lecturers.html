@@ -1,0 +1,91 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <title>Admin - Lecturers</title>
+    <style>
+        body {
+            font-family: Arial, sans-serif;
+            margin: 20px;
+            background-color: #f4f4f4;
+        }
+
+        h1 {
+            color: #333;
+            text-align: center;
+            margin-bottom: 40px;
+        }
+
+        h2 {
+            color: #555;
+        }
+
+        .lecturer {
+            background-color: #fff;
+            border: 1px solid #ddd;
+            border-radius: 8px;
+            padding: 20px;
+            margin-bottom: 20px;
+            box-shadow: 0 0 10px rgba(0, 0, 0, 0.1);
+        }
+
+        .lecturer p {
+            margin: 5px 0;
+            color: #666;
+        }
+
+        .lecturer ul {
+            list-style-type: disc;
+            margin: 10px 0 10px 20px;
+            padding: 0;
+        }
+
+        .lecturer ul li {
+            color: #444;
+        }
+
+        .button-container {
+            text-align: center;
+            margin-top: 20px;
+        }
+
+        .button {
+            display: inline-block;
+            text-decoration: none;
+            background-color: #007bff;
+            color: #fff;
+            padding: 10px 20px;
+            border-radius: 5px;
+            transition: background-color 0.3s ease;
+            margin: 5px;
+        }
+
+        .button:hover {
+            background-color: #0056b3;
+        }
+    </style>
+</head>
+<body>
+    <h1>Lecturers and Their Courses</h1>
+    <div>
+        <ul>
+            <li class="lecturer" th:each="lecturer : ${lecturers}">
+                <h2 th:text="${lecturer.name}"></h2>
+                <p>Email: <span th:text="${lecturer.email}"></span></p>
+                <p>Courses:</p>
+                <ul>
+                    <li th:each="course : ${lecturer.courses}">
+                        <span th:text="${course.name}"></span>
+                    </li>
+                </ul>
+            </li>
+        </ul>
+    </div>
+    <div class="button-container">
+        <a href="/dashboard" class="button">Back</a>
+        <a href="/admin/assignCourse" class="button">Assign Course to Lecturer</a>
+        <a href="/admin/addLecturerForm" class="button">Add New Lecturer</a>
+
+    </div>
+</body>
+</html>

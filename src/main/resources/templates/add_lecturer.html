@@ -1,0 +1,97 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <title>Add Lecturer</title>
+    <style>
+        body {
+            font-family: Arial, sans-serif;
+            background-color: #f4f4f9;
+            margin: 0;
+            padding: 0;
+            display: flex;
+            justify-content: center;
+            align-items: center;
+            height: 100vh;
+        }
+        h1 {
+            text-align: center;
+            color: #333;
+        }
+        form {
+            background-color: #fff;
+            padding: 20px;
+            border-radius: 8px;
+            box-shadow: 0 0 10px rgba(0, 0, 0, 0.1);
+            width: 100%;
+            max-width: 400px;
+        }
+        div {
+            margin-bottom: 15px;
+        }
+        label {
+            display: block;
+            font-weight: bold;
+            margin-bottom: 5px;
+            color: #333;
+        }
+        input[type="text"],
+        input[type="email"],
+        input[type="password"] {
+            width: calc(100% - 20px);
+            padding: 10px;
+            border: 1px solid #ccc;
+            border-radius: 4px;
+            box-sizing: border-box;
+            font-size: 16px;
+        }
+        button {
+            width: 100%;
+            padding: 10px;
+            background-color: #00aeff;
+            color: #fff;
+            border: none;
+            border-radius: 4px;
+            cursor: pointer;
+            font-size: 16px;
+        }
+        button:hover {
+            background-color: #00aeff;
+        }
+    </style>
+</head>
+<body>
+    <form action="#" th:action="@{/admin/addLecturer}" th:object="${person}" method="post">
+        <h1>Add Lecturer</h1>
+        <div>
+            <label for="name">Name:</label>
+            <input type="text" id="name" th:field="*{name}" required>
+        </div>
+        <div>
+            <label for="email">Email:</label>
+            <input type="email" id="email" th:field="*{email}" required>
+        </div>
+        <div>
+            <label for="confirmEmail">Confirm Email:</label>
+            <input type="email" id="confirmEmail" th:field="*{confirmEmail}" required>
+        </div>
+        <div>
+            <label for="mobileNumber">Mobile Number:</label>
+            <input type="text" id="mobileNumber" th:field="*{mobileNumber}" required>
+        </div>
+        <div>
+            <label for="pwd">Password:</label>
+            <input type="password" id="pwd" th:field="*{pwd}" required>
+        </div>
+        <div>
+            <label for="confirmPwd">Confirm Password:</label>
+            <input type="password" id="confirmPwd" th:field="*{confirmPwd}" required>
+        </div>
+        <div>
+            <button type="submit">Add Lecturer</button>
+            <a th:href="@{/admin/lecturers}">Back to Lecturers</a>
+
+        </div>
+    </form>
+</body>
+</html>

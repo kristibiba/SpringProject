@@ -1,0 +1,48 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <title>Course Students</title>
+    <style>
+        body {
+            font-family: Arial, sans-serif;
+            margin: 0;
+            padding: 0;
+            background-color: #f4f4f4;
+            color: #333;
+        }
+        h1 {
+            background-color: #0073e6;
+            color: #fff;
+            padding: 1rem;
+            text-align: center;
+            margin: 0;
+        }
+        ul {
+            list-style-type: none;
+            padding: 0;
+        }
+        li {
+            background: #fff;
+            margin: 1rem 0;
+            padding: 1rem;
+            border: 1px solid #ddd;
+            border-radius: 5px;
+        }
+    </style>
+</head>
+<body>
+    <h1>Students Enrolled</h1>
+    <div>
+        <ul>
+            <li th:each="student : ${students}">
+                <span th:text="${student.name}"></span>
+            </li>
+        </ul>
+    </div>
+
+    <div class="container">
+        <a href="/lecturer/courses">Back</a>
+    </div>
+</body>
+</html>
