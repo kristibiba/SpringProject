@@ -34,7 +34,7 @@ public class ProfileController {
     @Autowired
     PersonRepository personRepository;
 
-    private static final String UPLOAD_DIR = "C:\\Users\\User\\Desktop\\JavaEnterpriseApplicationsCourseWork\\src\\main\\resources\\static\\assets\\images\\";
+    private static final String UPLOAD_DIR = "C:\\Users\\User\\Desktop\\SpringProject\\src\\main\\resources\\static\\assets\\uploads";
 
 
     @RequestMapping("/displayProfile")

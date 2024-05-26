@@ -41,7 +41,7 @@ public class LecturerController {
     @Autowired
     PersonRepository personRepository;
 
-    private static final String UPLOAD_DIR = "C:\\Users\\User\\Desktop\\javaenterprice\\JavaEnterpriseApplicationsCourseWork\\src\\main\\resources\\static\\assets\\uploads\\";
+    private static final String UPLOAD_DIR = "C:\\Users\\User\\Desktop\\SpringProject\\src\\main\\resources\\static\\assets\\uploads\\";
 
     @GetMapping("/courses")
     public ModelAndView displayCourses(HttpSession session) {

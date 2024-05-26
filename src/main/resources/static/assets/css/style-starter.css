@@ -21401,6 +21401,12 @@ h4.inner-text-title {
   background-image: -ms-linear-gradient(90deg, #333 0%, #FFA500 100%);
 }
 
+.overview-item--c6 {
+  background-image: -moz-linear-gradient(90deg, #4CA1AF 0%, #C4E0E5 100%);
+  background-image: -webkit-linear-gradient(90deg, #4CA1AF 0%, #C4E0E5 100%);
+  background-image: -ms-linear-gradient(90deg,#4CA1AF 0%, #C4E0E5 100%);
+}
+
 .overview-box .icon {
     display: inline-block;
     vertical-align: top;
