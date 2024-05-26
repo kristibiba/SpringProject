@@ -1,0 +1,19 @@
+<!DOCTYPE html>
+<html xmlns:th="http://www.thymeleaf.org">
+<head>
+    <title>Rate Course</title>
+</head>
+<body>
+    <h1>Rate Course</h1>
+    <form action="#" th:action="@{/ratings/rate}" th:object="${rating}" method="post">
+        <input type="hidden" th:value="${courseId}" name="courseId"/>
+        <label for="student">Student:</label>
+        <select name="studentId">
+            <option th:each="student : ${students}" th:value="${student.id}" th:text="${student.name}"></option>
+        </select>
+        <label for="rating">Rating:</label>
+        <input type="number" name="rating" min="1" max="5"/>
+        <button type="submit">Submit</button>
+    </form>
+</body>
+</html>

@@ -1,0 +1,106 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <title>Lecturer Courses</title>
+    <style>
+        body {
+            font-family: Arial, sans-serif;
+            margin: 0;
+            padding: 0;
+            background-color: #f4f4f4;
+            color: #333;
+        }
+        h1 {
+            background-color: #0073e6;
+            color: #fff;
+            padding: 1rem;
+            text-align: center;
+            margin: 0;
+        }
+        .container {
+            padding: 2rem;
+        }
+        ul {
+            list-style-type: none;
+            padding: 0;
+        }
+        li {
+            background: #fff;
+            margin: 1rem 0;
+            padding: 1rem;
+            border: 1px solid #ddd;
+            border-radius: 5px;
+        }
+        form {
+            margin-top: 1rem;
+        }
+        input[type="file"] {
+            margin-bottom: 1rem;
+        }
+        button {
+            background-color: #0073e6;
+            color: #fff;
+            border: none;
+            padding: 0.5rem 1rem;
+            border-radius: 5px;
+            cursor: pointer;
+        }
+        button:hover {
+            background-color: #005bb5;
+        }
+        a {
+            color: #0073e6;
+            text-decoration: none;
+        }
+        a:hover {
+            text-decoration: underline;
+        }
+        .documents {
+            margin-top: 1rem;
+        }
+        .documents h3 {
+            margin: 0 0 0.5rem 0;
+        }
+        .error {
+            color: red;
+        }
+    </style>
+</head>
+<body>
+    <h1>Your Courses</h1>
+    <div class="container" th:if="${not #lists.isEmpty(courses)}">
+        <ul>
+            <li th:each="course : ${courses}">
+                <span th:text="${course.name}"></span>
+                <form th:action="@{/lecturer/uploadMaterial}" method="post" enctype="multipart/form-data">
+                    <input type="hidden" name="courseId" th:value="${course.courseId}" />
+                    <input type="file" name="file" accept="application/pdf" />
+                    <button type="submit">Upload Material</button>
+                </form>
+                <a th:href="@{/lecturer/students(courseId=${course.courseId})}">View Students</a>
+                
+                <div class="documents">
+                    <h3>Uploaded Documents:</h3>
+                    <ul>
+                        <li th:each="document : ${course.documents}">
+                            <a th:href="@{${document.filePath}}" th:text="${document.fileName}"></a>
+                            <form th:action="@{/lecturer/deleteMaterial}" method="post">
+                                <input type="hidden" name="documentId" th:value="${document.documentId}" />
+                                <button type="submit">Delete</button>
+                            </form>
+                        </li>
+                    </ul>
+                </div>
+            </li>
+        </ul>
+    </div>
+    <div class="container">
+        <p id="error" th:if="${error}" th:text="${error}" class="error"></p>
+    </div>
+
+    <div class="container">
+        <a href="/dashboard">Back</a>
+    </div>
+</body>
+</html>

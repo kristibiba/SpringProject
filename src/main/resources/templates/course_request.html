@@ -1,0 +1,25 @@
+<!DOCTYPE html>
+<html xmlns:th="http://www.thymeleaf.org">
+<head>
+<title>Course Detail</title>
+<!-- Add your CSS and JS links here -->
+</head>
+<body>
+<div class="container">
+<div class="card">
+<img th:src="'/assets/images/' + ${course.imageUrl}" style="height:200px;width:98%;margin:0 auto;" class="card-img-top" alt="Course Image">
+<div class="card-body">
+<h5 class="card-title" th:text="${course.name}">Course Name</h5>
+<p class="card-text" th:text="${course.description}">Course Description</p>
+<p class="card-text" th:text="'Fees: ' + ${course.fees}">Course Fees</p>
+<!-- <div th:if="${#authentication.principal?.authorities.contains('ROLE_STUDENT')}"> -->
+<a th:href="@{'/enroll/' + ${course.courseId}}" class="btn btn-primary">Enroll</a>
+</div>
+<!-- <div th:unless="${#authentication.principal?.authorities.contains('ROLE_STUDENT')}"> -->
+<p class="text-muted">Only students can enroll in this course.</p>
+</div>
+</div>
+</div>
+</div>
+</body>
+</html>

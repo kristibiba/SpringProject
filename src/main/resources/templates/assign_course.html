@@ -1,0 +1,82 @@
+<!DOCTYPE html>
+<html lang="en" xmlns:th="http://www.thymeleaf.org">
+<head>
+    <meta charset="UTF-8">
+    <title>Assign Course to Lecturer</title>
+    <style>
+        body {
+            font-family: Arial, sans-serif;
+            background-color: #f4f4f4;
+            margin: 0;
+            padding: 0;
+        }
+
+        h1 {
+            text-align: center;
+            margin-top: 50px;
+        }
+
+        form {
+            max-width: 400px;
+            margin: 20px auto;
+            background: #fff;
+            padding: 20px;
+            border-radius: 5px;
+            box-shadow: 0 0 10px rgba(0, 0, 0, 0.1);
+        }
+
+        label {
+            display: block;
+            margin-bottom: 10px;
+        }
+
+        select, button {
+            width: 100%;
+            padding: 10px;
+            margin-bottom: 20px;
+            border: 1px solid #ccc;
+            border-radius: 5px;
+            box-sizing: border-box;
+        }
+
+        button {
+            background-color: #007bff;
+            color: #fff;
+            cursor: pointer;
+        }
+
+        button:hover {
+            background-color: #0056b3;
+        }
+
+        a {
+            display: block;
+            text-align: center;
+            margin-top: 20px;
+            color: #007bff;
+            text-decoration: none;
+        }
+
+        a:hover {
+            text-decoration: underline;
+        }
+    </style>
+</head>
+<body>
+    <h1>Assign Course to Lecturer</h1>
+    <form th:action="@{/admin/assignCourse}" method="post">
+        <label for="lecturerId">Select Lecturer:</label>
+        <select name="lecturerId" id="lecturerId" required>
+            <option th:each="lecturer : ${lecturers}" th:value="${lecturer.personId}" th:text="${lecturer.name}"></option>
+        </select>
+
+        <label for="courseId">Select Course:</label>
+        <select name="courseId" id="courseId" required>
+            <option th:each="course : ${courses}" th:value="${course.courseId}" th:text="${course.name}"></option>
+        </select>
+
+        <button type="submit">Assign Course</button>
+    </form>
+    <a th:href="@{/admin/lecturers}">Back to Lecturers</a>
+</body>
+</html>
