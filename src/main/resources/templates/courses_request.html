@@ -1,0 +1,28 @@
+<!DOCTYPE html>
+<html xmlns:th="http://www.thymeleaf.org">
+<head>
+    <title>Course Details</title>
+    <!-- Add your CSS and JS includes here -->
+</head>
+<body>
+    <div class="container">
+        <h1 th:text="${course.name}">Course Name</h1>
+        <img th:src="'/assets/images/' + ${course.imageUrl}" alt="Course Image">
+        <p th:text="${course.description}">Course Description</p>
+        <p th:text="'Fees: ' + ${course.fees}">Course Fees</p>
+
+        <div th:if="${isEnrolled}">
+            <form th:action="@{/courses_request/{courseId}/leave(courseId=${course.courseId})}" method="get">
+                <button type="submit" class="btn btn-danger">Request to Leave Course</button>
+            </form>
+        </div>
+
+        <form th:unless="${isEnrolled}" method="post" th:action="@{/courses_request/request}">
+            <input type="hidden" name="courseId" th:value="${course.id}" />
+
+            <input type="hidden" name="requestType" value="ENROLL" />
+            <button type="submit">Request to Enroll in Course</button>
+        </form>
+    </div>
+</body>
+</html>

@@ -4,6 +4,8 @@ import com.eazybytes.eazyschool.model.*;
 import com.eazybytes.eazyschool.repository.CoursesRepository;
 import com.eazybytes.eazyschool.repository.EazyClassRepository;
 import com.eazybytes.eazyschool.repository.PersonRepository;
+import com.eazybytes.eazyschool.service.CourseRequestService;
+
 import lombok.extern.slf4j.Slf4j;
 import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.data.domain.Sort;
@@ -229,6 +231,17 @@ public class AdminController {
         person.setRoles(lecturerRole);
         personRepository.save(person);
         return "redirect:/admin/lecturers";
+    }
+
+   
+    @Autowired
+    private CourseRequestService courseRequestService;
+
+    @GetMapping("/requests")
+    public String viewRequests(Model model, HttpSession session) {
+        List<CourseRequest> requests = courseRequestService.getAllRequests();
+        model.addAttribute("requests", requests);
+        return "admin_requests"; 
     }
 
 }

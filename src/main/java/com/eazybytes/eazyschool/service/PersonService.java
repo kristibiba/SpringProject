@@ -33,4 +33,8 @@ public class PersonService {
         }
         return isSaved;
     }
+
+    public Person findById(int personId) {
+        return personRepository.findById(personId).orElse(null);
+    }
 }
